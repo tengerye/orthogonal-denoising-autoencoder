@@ -199,24 +199,24 @@ class OrthdAE(OrthAE):
     def __init__(self, views, latent_spaces, x = None, knob = 0):
         m, n = x.shape
         
-               ###################################################
-        # trivial denoising
-       # x = np.tile(x, [1, m])
-       # self.denoise_x = x
-       # 
-       # for i in range(m):
-       #     x[i, i*n : i*n+n] = 0
+        ###################################################
+       # trivial denoising
+        x = np.tile(x, [1, m])
+        self.denoise_x = x
+        
+        for i in range(m):
+            x[i, i*n : i*n+n] = 0
             
         ###################################################
          # evenly denoising
-        x = np.tile(x, [1, 10])
-        self.denoise_x = x
-        
-        step = int(m/10)
-        for i in range(9):
-            x[i*step : i*step+step, i*n : i*n+n] = 0
-           
-        x[9*step-m : , -n] = 0
+       # x = np.tile(x, [1, 10])
+       # self.denoise_x = x
+       # 
+       # step = int(m/10)
+       # for i in range(9):
+       #     x[i*step : i*step+step, i*n : i*n+n] = 0
+       #    
+       # x[9*step-m : , -n] = 0
         ################################################### 
         
         super(OrthdAE, self).__init__(views, latent_spaces, x, knob)

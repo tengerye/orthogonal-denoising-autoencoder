@@ -22,22 +22,32 @@ Each package is an implementation using different languages (frameworks). Theref
 * The size of input for Python code is: NUM_OF_FEATURE x NUM_OF_EXAMPLE. The size of placeholder for TensorFlow code is: NUM_OF_EXAMPLE x NUM_OF_FEATURE.
 
 ## Demo
-Each package contains a demo which implements the first experiment of [the MMM2016 best paper](https://www.researchgate.net/publication/291520610_Learning_Multiple_Views_with_Orthogonal_Denoising_Autoencoders).
+Each package contains a demo (demo.py) which implements the first experiment of [the MMM2016 best paper](https://www.researchgate.net/publication/291520610_Learning_Multiple_Views_with_Orthogonal_Denoising_Autoencoders).
 
-### Details of the demo.
 
-### Run the demo.
-### Change the hyper-parameters.
+In order to run the demo, go to the corresponding directory and run the demos in shell:
+```shell
+python demo.py
+```
+You will see 3 figures pop up and then the terminal will print training process. In the end, the result of our model will pop up as figure.
+
+### Python implementation
+Finish.
+### TensorFlow implementation
+Finish.
+### Pytorch implementation
+In progress.
 
 ------------------------------------------------------------------------
 
 ## Acknowledgments
 Orthogonal denoising autoencodrs are proposed in the paper, *Learning Multiple Views with Orthogonal Denoising Autoencoders*, which won the best paper award in MMM2016.
 
-If you have an question or suggestion, please contact the author: TengQi Ye(yetengqi@gmail.com).
+If you have an question or suggestion, please contact the author: TengQi Ye(yetengqi@gmail.com). Your citation will be my biggest inspiration.
 
-If you find the project useful, your citation will be the biggest inspiration.
+> BibTeX Style Citation
 
+```
 @inproceedings{ye2016learning,
   title={Learning multiple views with orthogonal denoising autoencoders},
   author={Ye, TengQi and Wang, Tianchun and McGuinness, Kevin and Guo, Yu and Gurrin, Cathal},
@@ -46,7 +56,3 @@ If you find the project useful, your citation will be the biggest inspiration.
   year={2016},
   organization={Springer}
 }
-------------------------------------------------------------------------
-
-Example to run the first experiment:
-python exp1

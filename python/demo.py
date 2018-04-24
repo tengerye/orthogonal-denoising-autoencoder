@@ -114,8 +114,10 @@ def cca(m1, m2, preprocessing=None):
     # Adjust means to be 0 and perform PCA.
     if preprocessing == "orth":
         # Zero means.
-        m1 -= np.mean(m1, axis=0)
-        m2 -= np.mean(m2, axis=0)
+        m1 -= np.mean(m1, axis=1, keepdims=True)
+
+        # print("m1=", np.sum(m1, axis=1))
+        m2 -= np.mean(m2, axis=1, keepdims=True)
 
         # PCA.
 

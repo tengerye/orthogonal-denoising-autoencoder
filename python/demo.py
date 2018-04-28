@@ -121,7 +121,7 @@ def cca(m1, m2, preprocessing=None):
 
         # PCA.
 
-    cca = CCA(n_components=3)
+    cca = CCA(n_components=3, max_iter=100)
     cca.fit(m1.T, m2.T)
 
     X_c = cca.transform(m1.T)
@@ -139,17 +139,23 @@ def cca(m1, m2, preprocessing=None):
 def parse_arguments(argv):
     """Command line parse."""
     parser = argparse.ArgumentParser()
-    parser.add_argument('--log_frequency', type=int,
-                        default=10, help='How often to log results to the console.')
 
+    parser.add_argument('--plot', type=bool, default=True, help='plot experiment figures.')
+
+    return parser.parse_args()
 
 
 
 def main(args):
 
-    m1, m2 = toy_data()
+    # Plot experiment figures if needed.
+    if args.plot:
+        m1, m2 = toy_data()
+    else:
+        m1, m2 = toy_data([])
 
-    cca(m1, m2, "orth")
+    # cca(m1, m2)
+
 
 if __name__ == "__main__":
     main(parse_arguments(sys.argv[1:]))

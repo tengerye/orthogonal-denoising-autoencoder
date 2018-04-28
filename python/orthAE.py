@@ -139,6 +139,7 @@ class OrthAE(object):
             y=self.x
 
         # randomly initialize weights
+
         w1 = randInitWeights(self.w1.shape)[self.index1].flatten()
         w2 = randInitWeights(self.w2.shape)[self.index2].flatten()
 
@@ -232,7 +233,7 @@ class OrthdAE(OrthAE):
 
 
 # random initialize weights for AE
-def randInitWeights((L_in, L_out)):
+def randInitWeights(L_in, L_out):
     epsilon = np.sqrt(6.0 / (L_in + L_out))
     return np.random.rand(L_in, L_out) * 2 * epsilon - epsilon
 

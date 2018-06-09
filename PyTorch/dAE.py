@@ -9,6 +9,7 @@ import torch
 import scipy.io
 import matplotlib.pyplot as plt
 
+# from visualdl import LogWriter
 
 import argparse, sys
 
@@ -134,6 +135,47 @@ class AE(torch.nn.Module):
 
 
 
+class dAE(AE):
+    """Denoising auto-encoder. Inherit every methods except tuning."""
+
+    def tune(self, inputs, corrupt_type = "trivial", max_of_epoch = 10000, verbal = True):
+        """Train the anto-encoder.
+
+        Args:
+            inputs: with shape (N, n_input). We don't need target label because of unsupervised.
+            corrupt_type: in which way data is pre-processing.
+            max_of_epoch: the maximum number of epoch (iterations).
+            verbal: print training process.
+        """
+        if corrupt_type == "trivial":
+            inputs = self.trivial_denoising(inputs)
+
+        super(dAE, self).tune(inputs, max_of_epoch, verbal)
+
+
+    def trivial_denoising(self, inputs, repeat=None):
+        """Trivial denoising method. A random feature is whitening.
+
+        Args:
+        inputs: original data. Its shape is [n_samples, n_features].
+        repeat: how many times to repeat inputs.
+
+        Returns:
+        corruption: denoised data. Its shape is [n_samples, n_features].
+        """
+        n, m = np.shape(inputs)
+
+        if repeat is not None:
+            m = repeat
+
+        corruption = np.tile(inputs, [m, 1])
+
+        for i in range(m):
+            corruption[i*n : i*n+n, i] = 0
+
+        return corruption
+
+
 def main():
 
     m1, m2 = toy_data([])
@@ -142,6 +184,7 @@ def main():
     ae.tune(np.concatenate((m1, m2), axis=0).T, 100000)
     ae.show_hidden()
     # print(ae.hidden)
+
 
 
 if __name__ == "__main__":

@@ -42,6 +42,7 @@ In progress.
 
 ## Acknowledgments
 Orthogonal denoising autoencodrs are proposed in the paper, *Learning Multiple Views with Orthogonal Denoising Autoencoders*, which won the best paper award in MMM2016.
+![Certificate](./other/MMM2016.png)
 
 If you have an question or suggestion, please contact the author: TengQi Ye(yetengqi@gmail.com). Your citation will be my biggest inspiration.
 
